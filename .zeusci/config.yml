@@ -1,15 +1,19 @@
 # git clone https://github.com/chestm007/malilib.git --branch liteloader_1.12.2
 # git clone https://github.com/chestm007/malilib.git --branch fabric_1.18.x
+
+run_build: &run_build
+  run:
+    name: build malilib
+    command: |
+      ./gradlew build -Dorg.gradle.jvmargs=-Xmx2048m build
+
 build8: &build8
   docker:
     - image: gradle:7.3.3-jdk8
   working_directory: ~/repo
   steps:
     - checkout
-    - run:
-        name: build malilib
-        command: |
-          ./gradlew build -Dorg.gradle.jvmargs=-Xmx2048m build
+    - <<: *run_build
 
 build17: &build17
   docker:
@@ -17,10 +21,7 @@ build17: &build17
   working_directory: ~/repo
   steps:
     - checkout
-    - run:
-        name: build malilib
-        command: |
-          ./gradlew build -Dorg.gradle.jvmargs=-Xmx2048m build
+    - <<: *run_build
 
 jobs:
   1.18.1:
