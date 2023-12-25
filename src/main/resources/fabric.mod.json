@@ -20,7 +20,7 @@
 	"icon": "assets/malilib/icon.png",
 	"environment": "client",
 	"entrypoints": {
-		"init": [
+		"client-init": [
 			"malilib.MaLiLib"
 		],
 		"modmenu": [
@@ -32,7 +32,7 @@
 	],
 
 	"depends": {
-		"minecraft": "1.12.2",
+		"minecraft": "1.12.x",
 		"osl-entrypoints": "*",
 		"osl-resource-loader": "*"
 	}
